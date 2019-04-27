@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.hiphip.mapper.GoodsMapper">
+    <!--列出商品-->
+    <select id="goodsget"        resultType="com.example.hiphip.Entity.Goods">
+        SELECT*
+        FROM goods
+    </select>
+
+    <!--按goodsname列出商品-->
+    <select id="goodnameget"       resultType="com.example.hiphip.Entity.Goods">
+        SELECT *
+        FROM goods
+        WHERE goodname=#{goodname}
+    </select>
+
+    <!--按goodtypeId列出商品-->
+    <select id="goodtypeIdget"     resultType="com.example.hiphip.Entity.Goods">
+        SELECT *
+        FROM goods
+        WHERE goodtypeId=#{goodtypeId}
+    </select>
+
+    <!--商品上架-->
+    <insert id="goodinsert"     parameterType="com.example.hiphip.Entity.Goods">
+        INSERT INTO
+        goods(goodname,price,description,goodtypeId,goodimg)
+        VALUES (#{goodname},#{price},#{description},#{goodtypeId},#{goodimg})
+    </insert>
+
+    <!--商品下架-->
+    <delete id="gooddelete">
+        DELETE FROM
+        goods
+        WHERE goodId=#{goodId}  AND
+    </delete>
+
+    <!--上传图片-->
+    <insert id="uploadpic"      parameterType="com.example.hiphip.Entity.Goods">
+        INSERT INTO
+        goods(goodimg)
+        VALUES (#{goodimg})
+    </insert>
+
+</mapper>

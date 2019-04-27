@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.hiphip.mapper.UserMapper">
+    <!--列出用户-->
+    <select id="userget"  resultType="com.example.hiphip.Entity.User">
+        SELECT  *
+        FROM userinfo
+    </select>
+
+    <!--修改用户昵称-->
+    <update id="usernicknameupdate"     parameterType="com.example.hiphip.Entity.User">
+        UPDATE userinfo
+        SET nickname=#{nickname}
+        WHERE openId=#{openId}
+    </update>
+    <!--修改用户头像-->
+    <update id="useravatarUrlupdate"    parameterType="com.example.hiphip.Entity.User">
+        UPDATE userinfo
+        SET avatarUrl=#{avatarUrl}
+        WHERE openId=#{openId}
+    </update>
+
+    <!--添加用户-->
+    <insert id="userinsert"     parameterType="com.example.hiphip.Entity.User">
+        INSERT INTO
+        userinfo(openId,nickname,avatarUrl)
+        VALUES (#{openId},#{nickname},#{avatarUrl})
+    </insert>
+</mapper>

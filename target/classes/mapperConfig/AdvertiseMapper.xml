@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.hiphip.mapper.AdvertiseMapper">
+    <!--添加公告-->
+    <insert id="advertiseinsert"    parameterType="com.example.hiphip.Entity.Advertise">
+        INSERT INTO
+        advertise (title,content,pic)
+        VALUES (#{title},#{content},#{pic})
+    </insert>
+
+    <!--删除公告-->
+    <delete id="advertisedelete">
+        DELETE FROM
+        advertise
+        WHERE title=#{title}
+    </delete>
+
+    <!--修改公告-->
+    <update id="advertiseupdate"    parameterType="com.example.hiphip.Entity.Advertise">
+        UPDATE advertise
+        SET title=#{title},content=#{content},pic=#{pic}
+        WHERE advertiseId=#{advertiseId}
+    </update>
+
+    <!--列出公告-->
+    <select id="advertiseget"    resultType="com.example.hiphip.Entity.Advertise">
+        SELECT *
+        FROM advertise
+    </select>
+
+</mapper>

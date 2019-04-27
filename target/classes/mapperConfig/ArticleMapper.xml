@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.hiphip.mapper.ArticleMapper">
+    <!--添加文章-->
+    <insert id="articleinsert"    parameterType="com.example.hiphip.Entity.Article">
+        INSERT INTO
+        article (title,content,pic,brief)
+        VALUES (#{title},#{content},#{pic},#{brief})
+    </insert>
+
+    <!--删除文章-->
+    <delete id="articledelete">
+        DELETE FROM
+        article
+        WHERE articleId=#{articleId}
+    </delete>
+
+    <!--修改文章-->
+    <update id="articleupdate"    parameterType="com.example.hiphip.Entity.Article">
+        UPDATE article
+        SET title=#{title},content=#{content},pic=#{pic},brief=#{brief}
+        WHERE articleId=#{articleId}
+    </update>
+
+    <!--列出文章-->
+    <select id="articleget"    resultType="com.example.hiphip.Entity.Article">
+        SELECT *
+        FROM article
+    </select>
+
+</mapper>
